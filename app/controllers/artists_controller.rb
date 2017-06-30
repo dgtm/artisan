@@ -5,8 +5,16 @@ class ArtistsController < ApplicationController
   # GET /artists.json
   def index
     @artists = Artist.search(params[:search])
+    respond_to do |format|
+      format.html
+      format.js { render layout: false }
+      format.json { render json: @artists }
+    end
   end
 
+  def search
+    render json: Artist.search(params[:search])
+  end
   # GET /artists/1
   # GET /artists/1.json
   def show

@@ -1,32 +1,11 @@
-.field
-  = text_field_tag :search, '', id: 'search'
+= form_tag '', id: 'search-form', method: :get, remote: true do
+  .field
+    = text_field_tag :search, '', id: 'search'
+    = submit_tag 'Search'
 
 h1 All artists
-
-table
-  thead
-    tr
-      th Name
-      th Description
-      th Latitude
-      th Longitude
-      th Image url
-      th
-      th
-      th
-
-  tbody
-    - @artists.each do |artist|
-      tr
-        td = artist.name
-        td = artist.description
-        td = artist.latitude
-        td = artist.longitude
-        td = artist.image_url
-        td = link_to 'Show', artist
-        td = link_to 'Edit', edit_artist_path(artist)
-        td = link_to 'Destroy', artist, data: { confirm: 'Are you sure?' }, method: :delete
-
+#artist-list
+  = render 'list', artists: @artists
 br
 
 = link_to 'New Artist', new_artist_path

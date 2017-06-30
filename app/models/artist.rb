@@ -2,6 +2,6 @@ class Artist < ApplicationRecord
   acts_as_taggable
 
   def self.search(term)
-    all
+    where("name LIKE ?", "%#{term}%")
   end
 end

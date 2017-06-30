@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'database_cleaner'
   gem 'rails-controller-testing'
+  gem 'pry-rails'
 end
 
 group :development do
