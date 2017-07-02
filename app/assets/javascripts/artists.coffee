@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on('turbolinks:load', ->
-  $('#search').typeahead({source: ["Floyd", "Queen"]})
+  $.get("/artists/suggestions").then (suggestions) ->
+    data = suggestions.map (suggestion) -> suggestion.name
+    $('#search').typeahead({source: data})
   $('#tag_list').tokenfield()
 )

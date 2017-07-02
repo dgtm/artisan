@@ -1,6 +1,6 @@
 = form_tag '', id: 'search-form', method: :get, remote: true do
   .field
-    = text_field_tag :search, '', id: 'search'
+    = text_field_tag :search, '', id: 'search', autocomplete: 'off'
     = submit_tag 'Search'
 
 h1 All artists

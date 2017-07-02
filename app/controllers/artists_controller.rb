@@ -12,9 +12,11 @@ class ArtistsController < ApplicationController
     end
   end
 
-  def search
-    render json: Artist.search(params[:search])
+  # GET /artists/suggestions.json
+  def suggestions
+    render json: Artist.suggestions_for(params[:search])
   end
+
   # GET /artists/1
   # GET /artists/1.json
   def show
