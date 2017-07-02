@@ -10,7 +10,7 @@ gem 'rails', '~> 5.1.2'
 gem 'pg'
 gem 'geokit'
 gem 'puma', '~> 3.7'
-gem 'webpacker' # Because Heroku wants webpacker to install yarn
+# gem 'webpacker' # Because Heroku wants webpacker to install yarn
 # Default Rails Stuff #
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
