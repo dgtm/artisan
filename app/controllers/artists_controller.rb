@@ -1,10 +1,11 @@
 class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_default_page_params, only: [:index]
   # GET /artists
   # GET /artists.json
   def index
     @artists = Artist.search(params[:search])
+    @artists = Kaminari.paginate_array(@artists).page(params[:page]).per(params[:per_page])
     respond_to do |format|
       format.html
       format.js { render layout: false }
@@ -35,6 +36,7 @@ class ArtistsController < ApplicationController
   # POST /artists.json
   def create
     @artist = Artist.new(artist_params)
+    @artist.create_location(artist_params[:location])
 
     respond_to do |format|
       if @artist.save
@@ -79,6 +81,12 @@ class ArtistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artist_params
-      params.require(:artist).permit(:name, :description, :latitude, :longitude, :image_url, :tag_list)
+      params.require(:artist).permit(:name, :description, :location, :image_url, :tag_list)
+    end
+
+    # Default parameters for Kaminari
+    def set_default_page_params
+      params[:page] ||= 1
+      params[:per_page] ||= 10
     end
 end

@@ -7,15 +7,9 @@ p
   strong Description:
   = @artist.description
 p
-  strong Latitude:
-  = @artist.latitude
-p
-  strong Longitude:
-  = @artist.longitude
-p
   strong Image url:
   = @artist.image_url
 
-= link_to 'Edit', edit_artist_path(@artist)
+= link_to 'Edit', edit_artist_path(@artist), class: 'btn btn-info'
 '  |
-= link_to 'Back', artists_path
+= link_to 'Back', artists_path, class: 'btn btn-info'

@@ -1,12 +1,9 @@
-table
+table.table-striped.table
   thead
     tr
-      th Name
-      th Description
-      th Latitude
-      th Longitude
-      th Image url
-      th
+      th Artist Name
+      th About
+      th Related to
       th
       th
 
@@ -15,9 +12,9 @@ table
       tr
         td = artist.name
         td = artist.description
-        td = artist.latitude
-        td = artist.longitude
-        td = artist.image_url
+        td = artist.tag_list
         td = link_to 'Show', artist
         td = link_to 'Edit', edit_artist_path(artist)
         td = link_to 'Destroy', artist, data: { confirm: 'Are you sure?' }, method: :delete
+
+= paginate artists

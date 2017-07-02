@@ -1,11 +1,13 @@
 = form_tag '', id: 'search-form', method: :get, remote: true do
   .field
-    = text_field_tag :search, '', id: 'search', autocomplete: 'off'
-    = submit_tag 'Search'
+    = text_field_tag :search, '', id: 'search', autocomplete: 'off', placeholder: 'Search for a genre..'
+    = submit_tag 'Search', class: 'btn-warning'
 
-h1 All artists
+
+.text-right
+  = link_to 'New Artist', new_artist_path, class: 'btn btn-info'
+
 #artist-list
   = render 'list', artists: @artists
 br
-
-= link_to 'New Artist', new_artist_path
+= link_to 'Back', artists_path, class: 'btn btn-success'
